@@ -56,25 +56,37 @@
 
 /* Enhanced button styles */
 .btn-primary {
-  @apply bg-gradient-to-r from-slate-700 to-blue-700 text-white font-semibold py-3 px-6 rounded-lg shadow-lg hover:from-slate-800 hover:to-blue-800 hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 active:translate-y-0;
+  background: linear-gradient(to right, rgb(51, 65, 85), rgb(29, 78, 216));
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  transform: translateY(0);
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(to right, rgb(30, 41, 59), rgb(30, 64, 175));
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  transform: translateY(-2px);
 }
 
 .btn-secondary {
-  @apply bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold py-3 px-6 rounded-lg shadow-lg hover:from-green-700 hover:to-emerald-700 hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 active:translate-y-0;
+  background: linear-gradient(to right, rgb(22, 163, 74), rgb(5, 150, 105));
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  transform: translateY(0);
+  transition: all 0.2s ease;
 }
 
-/* Enhanced card styles */
-.card-enhanced {
-  @apply bg-white/70 backdrop-blur-sm border border-slate-200/60 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1;
-}
-
-/* Upload area enhancement */
-.upload-zone {
-  @apply border-2 border-dashed border-slate-300 rounded-xl bg-slate-50/50 hover:bg-slate-100/50 hover:border-blue-400 transition-all duration-300 cursor-pointer;
-}
-
-.upload-zone:hover {
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(99, 102, 241, 0.05) 100%);
+.btn-secondary:hover {
+  background: linear-gradient(to right, rgb(21, 128, 61), rgb(4, 120, 87));
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  transform: translateY(-2px);
 }
 
 /* Loading spinner enhancement */
@@ -85,13 +97,17 @@
 }
 
 .spinner {
-  @apply animate-spin rounded-full border-b-2 border-slate-700;
-  animation-duration: 1s;
+  animation: spin 1s linear infinite;
+  border-radius: 9999px;
+  border-bottom: 2px solid rgb(51, 65, 85);
 }
 
 /* Text gradient effects */
 .text-gradient {
-  @apply bg-gradient-to-r from-slate-700 via-blue-700 to-indigo-700 bg-clip-text text-transparent;
+  background: linear-gradient(to right, rgb(51, 65, 85), rgb(29, 78, 216), rgb(67, 56, 202));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 /* Smooth scrolling */
@@ -101,12 +117,15 @@ html {
 
 /* Enhanced focus states */
 .focus-enhanced:focus {
-  @apply outline-none ring-4 ring-blue-500/20 border-blue-400;
+  outline: none;
+  box-shadow: 0 0 0 4px rgb(59 130 246 / 0.2);
+  border-color: rgb(96, 165, 250);
 }
 
 /* Responsive improvements */
 @media (max-width: 640px) {
   .mobile-optimized {
-    @apply text-sm px-4 py-2;
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
   }
 }
