@@ -6,6 +6,8 @@ import ModuleCard from './components/ModuleCard';
 import FlowDiagram from './components/FlowDiagram';
 import Footer from './components/Footer';
 import CreditDispute from './components/CreditDispute';
+import DocumentTemplates from './components/DocumentTemplates';
+import LegalReference from './components/LegalReference';
 
 const coreModules = [
   { name: 'InstrumentParser', description: 'Detects type (order vs bearer), parses endorsements' },
@@ -18,13 +20,18 @@ const coreModules = [
 
 const App: React.FC = () => {
   return (
-    <div className="min-h-screen text-[#1E2A3A] font-sans p-4 sm:p-8 md:p-12">
-      <main className="max-w-5xl mx-auto space-y-16">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 text-[#1E2A3A] font-sans p-4 sm:p-8 md:p-12 transition-all duration-300">
+      <main className="max-w-5xl mx-auto space-y-16 animate-fade-in">
         <Header />
 
-        <p className="text-center text-lg max-w-3xl mx-auto leading-relaxed">
-          This modular, dialogic AI system interprets, endorses, and discharges negotiable instruments in compliance with lawful frameworks like the UCC and Bill of Exchange Act. It encodes sovereign remedy beyond automation.
-        </p>
+        <div className="text-center max-w-4xl mx-auto bg-white/70 backdrop-blur-sm border border-slate-200/50 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
+          <p className="text-lg leading-relaxed text-slate-700 mb-4">
+            This modular, dialogic AI system interprets, endorses, and discharges negotiable instruments in compliance with lawful frameworks like the UCC and Bill of Exchange Act.
+          </p>
+          <p className="text-base italic text-slate-600 border-t border-slate-200 pt-4">
+            "It encodes sovereign remedy beyond automation — empowering lawful dominion over commerce."
+          </p>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <Section title="Purpose">
@@ -83,6 +90,14 @@ const App: React.FC = () => {
 
         <Section title="Credit Dispute Analysis">
             <CreditDispute />
+        </Section>
+
+        <Section title="Document Templates">
+            <DocumentTemplates />
+        </Section>
+
+        <Section title="Legal Reference Library">
+            <LegalReference />
         </Section>
 
         <Footer />

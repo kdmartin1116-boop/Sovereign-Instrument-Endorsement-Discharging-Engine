@@ -49,7 +49,33 @@ const FlowDiagram: React.FC = () => {
 
     try {
       const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-      const prompt = `Explain a '${endorsementType}' endorsement on a negotiable instrument according to the UCC. What are its implications? Explain it clearly and concisely for someone studying sovereign remedy.`;
+      const prompt = `Provide a comprehensive explanation of '${endorsementType}' endorsement from both UCC law and sovereign remedy perspectives:
+
+## UCC Legal Framework
+- **UCC Article 3 Section**: Specific code reference and requirements
+- **Legal Definition**: Technical definition under commercial law
+- **Required Elements**: What must be present for validity
+- **Legal Effects**: How it changes the instrument's negotiability
+
+## Sovereign Application  
+- **Practical Use**: How sovereigns employ this endorsement type
+- **Strategic Value**: Why this endorsement serves sovereign interests
+- **Risk Management**: How it protects the endorser's position
+- **Common Law Basis**: Constitutional and natural law foundations
+
+## Real-World Examples
+- **Commercial Context**: Typical business situations where used
+- **Sovereign Context**: How to apply in credit disputes, debt discharge
+- **Wording Examples**: Actual endorsement language to use
+- **Pitfalls to Avoid**: Common mistakes that invalidate the endorsement
+
+## Integration with Discharge Process
+- **Tender Relationship**: How this endorsement affects tender offers
+- **Discharge Mechanics**: Connection to lawful debt discharge
+- **Jurisdictional Considerations**: Land/Air/Water law implications
+- **Documentation Requirements**: What records to maintain
+
+Provide practical, actionable intelligence for someone exercising sovereign commercial rights under UCC and common law principles.`;
       
       const response = await ai.models.generateContent({
         model: 'gemini-2.5-flash',
