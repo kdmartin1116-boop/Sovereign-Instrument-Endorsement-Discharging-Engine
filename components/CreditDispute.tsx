@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { GoogleGenAI } from "@google/genai";
+import { useUser } from '../context/UserContext';
 
 const UploadIcon: React.FC = () => (
     <svg className="w-8 h-8 mb-4 text-slate-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
@@ -18,6 +19,7 @@ const LoadingSpinner: React.FC = () => (
 );
 
 const CreditDispute: React.FC = () => {
+  const { user, saveDocument } = useUser();
   const [file, setFile] = useState<File | null>(null);
   const [analysis, setAnalysis] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -132,6 +134,15 @@ Format as structured markdown with clear sections and actionable intelligence fo
         setAnalysis(response.text);
         setSuccess("Credit report analysis completed successfully! Review the findings below.");
 
+        // Auto-save analysis for logged-in users
+        if (user && file) {
+          saveDocument(
+            `Credit Analysis - ${file.name} - ${new Date().toLocaleDateString()}`,
+            'analysis',
+            response.text
+          );
+        }
+
       } catch (err) {
         console.error("Analysis error:", err);
         setError("Failed to analyze the credit report. The file may be in an unsupported format or there was an issue with the AI service. Please try again.");
@@ -226,6 +237,15 @@ Create a professional, legally-sound document ready for notarization and service
             });
 
             setAffidavit(response.text);
+
+            // Auto-save affidavit for logged-in users
+            if (user && file) {
+              saveDocument(
+                `Dispute Affidavit - ${file.name} - ${new Date().toLocaleDateString()}`,
+                'affidavit',
+                response.text
+              );
+            }
         } catch (err) {
             console.error("Affidavit generation error:", err);
             setError("Failed to generate the affidavit. Please try again.");

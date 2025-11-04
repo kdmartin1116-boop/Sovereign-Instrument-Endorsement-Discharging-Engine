@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import Header from './components/Header';
 import Section from './components/Section';
 import ModuleCard from './components/ModuleCard';
@@ -8,6 +8,10 @@ import Footer from './components/Footer';
 import CreditDispute from './components/CreditDispute';
 import DocumentTemplates from './components/DocumentTemplates';
 import LegalReference from './components/LegalReference';
+import AIWorkflows from './components/AIWorkflows';
+import AuthModal from './components/AuthModal';
+import UserDashboard from './components/UserDashboard';
+import { UserProvider, useUser } from './context/UserContext';
 
 const coreModules = [
   { name: 'InstrumentParser', description: 'Detects type (order vs bearer), parses endorsements' },
@@ -18,11 +22,38 @@ const coreModules = [
   { name: 'CommentaryOverlay', description: 'Integrates teachings from Brandon and David to guide AI reflection and user education' },
 ];
 
-const App: React.FC = () => {
+const AppContent: React.FC = () => {
+  const { user } = useUser();
+  const [showAuthModal, setShowAuthModal] = useState(false);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 text-[#1E2A3A] font-sans p-4 sm:p-8 md:p-12 transition-all duration-300">
       <main className="max-w-5xl mx-auto space-y-16 animate-fade-in">
+        
+        {/* User Authentication Bar */}
+        <div className="flex justify-end mb-4">
+          {user ? (
+            <div className="bg-white/70 backdrop-blur-sm border border-slate-200/60 px-4 py-2 rounded-lg shadow-sm">
+              <span className="text-sm text-slate-600">Signed in as </span>
+              <span className="font-medium text-slate-800">{user.name}</span>
+            </div>
+          ) : (
+            <button
+              onClick={() => setShowAuthModal(true)}
+              className="bg-gradient-to-r from-slate-700 to-blue-700 text-white px-6 py-2 rounded-lg shadow-lg hover:from-slate-800 hover:to-blue-800 transition-all duration-200"
+            >
+              Sign In / Sign Up
+            </button>
+          )}
+        </div>
         <Header />
+
+        {/* User Dashboard - Only show for logged-in users */}
+        {user && (
+          <Section title="Your Dashboard">
+            <UserDashboard />
+          </Section>
+        )}
 
         <div className="text-center max-w-4xl mx-auto bg-white/70 backdrop-blur-sm border border-slate-200/50 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
           <p className="text-lg leading-relaxed text-slate-700 mb-4">
@@ -88,6 +119,10 @@ const App: React.FC = () => {
             <FlowDiagram />
         </Section>
 
+        <Section title="Advanced AI Workflows">
+            <AIWorkflows />
+        </Section>
+
         <Section title="Credit Dispute Analysis">
             <CreditDispute />
         </Section>
@@ -102,7 +137,21 @@ const App: React.FC = () => {
 
         <Footer />
       </main>
+
+      {/* Authentication Modal */}
+      <AuthModal 
+        isOpen={showAuthModal} 
+        onClose={() => setShowAuthModal(false)} 
+      />
     </div>
+  );
+};
+
+const App: React.FC = () => {
+  return (
+    <UserProvider>
+      <AppContent />
+    </UserProvider>
   );
 };
 
