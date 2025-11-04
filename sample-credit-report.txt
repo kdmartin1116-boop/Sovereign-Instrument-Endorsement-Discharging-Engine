@@ -1,0 +1,62 @@
+SAMPLE CREDIT REPORT - FOR TESTING PURPOSES
+==========================================
+
+Personal Information:
+Name: John Doe
+Address: 123 Main St, Anytown, USA 12345
+SSN: XXX-XX-1234
+Date of Birth: 01/15/1980
+
+Credit Score: 650 (Fair)
+
+Account Information:
+==================
+
+1. ABC Credit Card Company
+   Account #: 1234567890123456
+   Balance: $2,500
+   Status: 30 Days Late
+   Date Opened: 03/15/2019
+   Last Payment: 09/15/2024
+   
+2. XYZ Auto Loans
+   Account #: AL987654321
+   Balance: $15,000
+   Status: Current
+   Date Opened: 06/01/2022
+   Monthly Payment: $350
+   
+3. Student Loan Services Inc.
+   Account #: SL555666777
+   Balance: $25,000
+   Status: Deferred
+   Date Opened: 08/20/2018
+   
+4. Medical Collections Agency
+   Account #: MC123789
+   Balance: $850
+   Status: Collection
+   Date of Service: 02/10/2024
+   Original Creditor: City Hospital
+   
+5. Utility Company Collections
+   Account #: UC999888
+   Balance: $220
+   Status: Collection
+   Date Placed: 07/30/2024
+   Original Creditor: Power & Light Co.
+
+Inquiries:
+=========
+- ABC Bank (Hard Inquiry) - 08/15/2024
+- Credit Monitoring Service (Soft Inquiry) - 10/01/2024
+- XYZ Mortgage Co. (Hard Inquiry) - 09/20/2024
+
+Potential Issues for Dispute:
+============================
+- Medical collection may lack proper validation
+- Utility collection amount seems disputed by consumer
+- ABC Credit Card late status may be inaccurate due to payment processing delays
+- Student loan deferment status needs verification
+
+This is a sample report for testing the AI analysis system.
